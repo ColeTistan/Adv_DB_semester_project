@@ -6,7 +6,6 @@ from flask import (
     redirect
 )
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
 import os
 
 base_directory = os.path.abspath(os.path.dirname(__file__))
@@ -75,7 +74,7 @@ def edit(quote_id):
 
         return redirect(url_for('index'))
     
-    return render_template('edit.html', quote=edit_quote)
+    return render_template('edit.html', edit_quote=edit_quote)
 
 @app.route('/delete/<int:quote_id>')
 def delete(quote_id):
@@ -83,7 +82,6 @@ def delete(quote_id):
     db.session.delete(quote)
     db.session.commit()
     return redirect(url_for('index'))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
