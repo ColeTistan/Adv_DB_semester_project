@@ -23,14 +23,14 @@
             {% for quote in quotes %}
             <tr>
                 <th scope="row">{{ quote.id }}</th>
-                <td>{{ quote.quote }}</td>
+                <td>"{{ quote.quote }}"</td>
                 <td>{{ quote.character_name }}</td>
                 <td>{{ quote.actor_name }}</td>
                 <td>{{ quote.movie_name }}</td>
                 <td>
                     <div class="btn-group">
                         <a href="{{ url_for('edit', quote_id=quote.id) }}" class="btn btn-warning" aria-current="page">Edit</a>
-                        <a href="{{ url_for('delete', quote_id=quote.id) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ url_for('delete', quote_id=quote.id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
                     </div>
                 </td>
             </tr>
